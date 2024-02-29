@@ -84,9 +84,21 @@ async function getWeather(lat, long) {
   }
 }
 
+async function getWeather2(location) {
+  try {
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=e51c6b2ad78b4d958b1140311242702&q=${location}`, {mode: 'cors'});
+    const data = await response.json();
+    console.log(data);
+  } catch(e) {
+    console.error(e.messaage);
+  }
+}
+
 getWeatherBtn.addEventListener('click', (e) => {
   e.preventDefault();
   getWeather(latitudeInput.value, longitudeInput.value);
 })
 
 weatherDisplay.style.display = 'none';
+
+getWeather2('Busan');
