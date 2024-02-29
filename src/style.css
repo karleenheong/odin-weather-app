@@ -1,3 +1,23 @@
-.hello {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.1rem;
+}
+
+form {
+  margin: 15px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+#getWeatherBtn {
+  padding: 10px 15px;
+  background-color: navy;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
 }
