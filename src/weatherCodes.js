@@ -1,116 +1,77 @@
-export function interpretWeatherCode(code) {
-  let interpretation;
-  switch(+code) {
-    case 0:
-      interpretation = 'Clear sky';
-      break;
-    case 1:
-    case 2:
-    case 3:
-      interpretation = 'Mainly clear, partly cloudy, and overcast';
-      break;
-    case 45:
-    case 48:
-      interpretation = 'Fog and depositing rime fog';
-      break;
-    case 51:
-    case 53:
-    case 55: 
-      interpretation = 'Drizzle: Light, moderate, and dense intensity';
-      break;
-    case 56:
-    case 57:
-      interpretation = 'Freezing Drizzle: Light and dense intensity';
-      break;
-    case 61:
-    case 63:
-    case 65: 
-      interpretation = 'Rain: Slight, moderate and heavy intensity';
-      break;
-    case 66:
-    case 67:
-      interpretation = 'Freezing Rain: Light and heavy intensity';
-      break;
-    case 71:
-    case 73:
-    case 75:
-      interpretation = 'Snow fall: Slight, moderate, and heavy intensity';
-      break;
-    case 77:
-      interpretation = 'Snow grains';
-      break;
-    case 80:
-    case 81:
-    case 82:
-      interpretation = 'Rain showers: Slight, moderate, and violent';
-      break;
-    case 85:
-    case 86:
-      interpretation = 'Snow showers slight and heavy';
-      break;
-    case 95:
-      interpretation = 'Thunderstorm: Slight or moderate';
-      break;
-    case 96:
-    case 99:
-      interpretation = 'Thunderstorm with slight and heavy hail';
-      break;
-    default:
-      interpretation = 'Interpretation failed';
-  }
-  return interpretation;
-}
-
-export function getSearchTerm(code) {
+export default function getGifID(code) {
   let gifId;
   switch(+code) {
-    case 0:
-      gifId = '3oz8xwT20ApeHadTlS';
+    case 1000: // sunny
+      gifId = 'o7R0zQ62m8Nk4';
       break;
-    case 1:
-    case 2:
-    case 3:
-      gifId = '3oz8xsTTDHL2D8Hluw';
+    case 1003: // partly cloudy
+      gifId = 'CafqXRlBVvEqMchF1m';
       break;
-    case 45:
-    case 48:
-      gifId = 'xT9GEpwYcYtwrqjdQc';
+    case 1006: // cloudy
+      gifId = 'lOkbL3MJnEtHi';
       break;
-    case 51:
-    case 53:
-    case 55: 
-    case 56:
-    case 57:
+    case 1009: // overcast
+      gifId = '3o7rc6sa2RvKo8K5EI';
+      break;
+    case 1030: // mist
+      gifId = 'sZmv85pZ8NG60HU9QK';
+      break;
+    case 1180:
+    case 1183:
+    case 1186:
+    case 1189:
+    case 1192:
+    case 1195:
+    case 1198:
+    case 1201:
+    case 1240:
+    case 1243:
+    case 1246:
+    case 1063: // rain
+      gifId = '3og0IOUWB5AZoP6la0';
+      break;
+    case 1114:
+    case 1117:
+    case 1210:
+    case 1213:
+    case 1216:
+    case 1219:
+    case 1222:
+    case 1225:
+    case 1255:
+    case 1258:
+    case 1066: // snow
+      gifId = '12wteMTXxjLaVO';
+      break;
+    case 1204:
+    case 1207:
+    case 1249:
+    case 1252:
+    case 1069: // sleet
+      gifId = 'akkrYRhxs8BKE';
+      break;
+    case 1150:
+    case 1153:
+    case 1168:
+    case 1171:
+    case 1072: // drizzle
       gifId = 'xT9GEOg09OuResnZ6g';
       break;
-    case 61:
-    case 63:
-    case 65: 
-    case 66:
-    case 67:
-      gifId = 'dI3D3BWfDub0Q';
+    case 1147:
+    case 1035: // fog
+      gifId = 'ZWRCWdUymIGNW';
       break;
-    case 71:
-    case 73:
-    case 75:
-    case 77:
-      gifId = 'N7ZiLbtDr84Yo';
+    case 1261:
+    case 1264:
+    case 1237: // hail
+      gifId = 'YMPVlSoVQDJGU';
       break;
-    case 80:
-    case 81:
-    case 82:
-      gifId = 'UbocuGUmAAHDTOQAiH';
-      break;
-    case 85:
-    case 86:
-      gifId = 'SuG4g3wrhnM0KfBA48';
-      break;
-    case 95:
-      gifId = 'NWFgmiGdF4rGo';
-      break;
-    case 96:
-    case 99:
-      gifId = 'A2G7aB3n0ybao';
+    case 1087:
+    case 1276:
+    case 1279:
+    case 1282:
+    case 1273: // thunder
+      gifId = '3o6gDYJBQLIHFZoWL6';
       break;
     default:
       gifId = '8L0Pky6C83SzkzU55a';
