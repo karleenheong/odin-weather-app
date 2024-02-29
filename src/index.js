@@ -100,16 +100,21 @@ async function getWeather() {
   }
 }
 
-getWeatherBtn.addEventListener('click', (e) => {
-  e.preventDefault();
+function clearContainer() {
   while(resultsContainer.firstChild){
     resultsContainer.removeChild(resultsContainer.firstChild);
   }
+}
+
+getWeatherBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  clearContainer();
   getWeather();
 });
 
 toggleTempBtn.addEventListener('click', (e) => {
   e.preventDefault();
+  clearContainer();
   if(currentlyCelsius) {
     toggleTempBtn.textContent = 'Change to Celsius';
     currentlyCelsius = false;
@@ -119,6 +124,7 @@ toggleTempBtn.addEventListener('click', (e) => {
   }
   getWeather();
 });
+
 
 weatherDisplay.style.display = 'none';
 
