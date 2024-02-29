@@ -1,4 +1,4 @@
-export default function interpretWeatherCode(code) {
+export function interpretWeatherCode(code) {
   let interpretation;
   switch(+code) {
     case 0:
@@ -59,4 +59,61 @@ export default function interpretWeatherCode(code) {
       interpretation = 'Interpretation failed';
   }
   return interpretation;
+}
+
+export function getSearchTerm(code) {
+  let gifId;
+  switch(+code) {
+    case 0:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 1:
+    case 2:
+    case 3:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 45:
+    case 48:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 51:
+    case 53:
+    case 55: 
+    case 56:
+    case 57:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 61:
+    case 63:
+    case 65: 
+    case 66:
+    case 67:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 71:
+    case 73:
+    case 75:
+    case 77:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 80:
+    case 81:
+    case 82:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 85:
+    case 86:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 95:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    case 96:
+    case 99:
+      gifId = '3oz8xwT20ApeHadTlS';
+      break;
+    default:
+      gifId = '3oz8xwT20ApeHadTlS';
+  }
+  return gifId;
 }
