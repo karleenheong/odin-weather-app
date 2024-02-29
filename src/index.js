@@ -5,10 +5,12 @@ import getGifId from './weatherCodes.js';
 
 // Get references
 const weatherDisplay = document.querySelector('#results');
-// const toggleTempBtn = document.querySelector('#toggleTemp');
+const toggleTempBtn = document.querySelector('#toggleTemp');
 const resultsContainer = document.querySelector('#resultsContainer');
 const locationInput = document.querySelector('#location');
 const getWeatherBtn = document.querySelector('#getWeatherBtn');
+
+let currentlyCelsius = true;
 
 // Get Gif
 async function displayGif(gifId) {
@@ -59,7 +61,13 @@ function displayWeatherInfo(data) {
     const day = document.createElement('div');
     day.textContent = forecastDates[i];
     const temp = document.createElement('div');
-    temp.textContent = `${forecastTempsC[i]}°C`;
+
+    if(currentlyCelsius){
+      temp.textContent = `${forecastTempsC[i]}°C`;
+    } else {
+      temp.textContent = `${forecastTempsF[i]}°F`;
+    }
+
     const condition = document.createElement('div');
     condition.textContent = forecastConditions[i];
     const icon = document.createElement('img');
@@ -78,6 +86,7 @@ function displayWeatherInfo(data) {
 
 async function getWeather() {
   const query = locationInput.value;
+  console.log(query);
   const str = `https://api.weatherapi.com/v1/forecast.json?key=e51c6b2ad78b4d958b1140311242702&q&q=${query}&days=3&aqi=no&alerts=no`;
 
   try {
@@ -97,7 +106,19 @@ getWeatherBtn.addEventListener('click', (e) => {
     resultsContainer.removeChild(resultsContainer.firstChild);
   }
   getWeather();
-})
+});
+
+toggleTempBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if(currentlyCelsius) {
+    toggleTempBtn.textContent = 'Change to Celsius';
+    currentlyCelsius = false;
+  } else {
+    toggleTempBtn.textContent = 'Change to Fahrenheit'
+    currentlyCelsius = true;
+  }
+  getWeather();
+});
 
 weatherDisplay.style.display = 'none';
 
