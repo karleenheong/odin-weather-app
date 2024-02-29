@@ -6,6 +6,21 @@
     <title>Weather App</title>
   </head>
   <body>
+    <form id="myForm" action="">
+      <div>
+        <label for="latitude">Enter latitude: </label>
+        <input type="text" id="latitude">
+      </div>
+      <div>
+        <label for="longitude">Enter longitude: </label>
+        <input type="text" id="longitude">
+      </div>
+        <button id="getWeatherBtn" type="submit">Get the Weather</button>
+    </form>
+    <div id="results">
+      <button id="toggleTemp">Change to Fahrenheit</button>
+      <div id="resultsContainer"></div>
+    </div>
     <script src="./bundle.js"></script>
   </body>
 </html>
