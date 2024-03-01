@@ -6,16 +6,25 @@
     <title>Weather App</title>
   </head>
   <body>
-    <form action="">
-      <div>
-        <label for="location">Enter location: </label>
-        <input type="text" id="location">
+    <div class="container">
+      <div class="formDiv">
+        <form>
+          <div>
+            <label for="location">Enter location: </label>
+            <input type="text" id="location">
+          </div>
+          <div> 
+            <button id="getWeatherBtn" type="submit">Get the Weather</button>
+        </div>
+        </form>
       </div>
-        <button id="getWeatherBtn" type="submit">Get the Weather</button>
-    </form>
-    <div id="results">
-      <button id="toggleTemp">Change to Fahrenheit</button>
-      <div id="resultsContainer"></div>
+      <div id="results">
+        <div class="loader"></div>
+        <div>
+          <button id="toggleTemp">Change to Fahrenheit</button>
+        </div>
+        <div id="resultsContainer"></div>
+      </div>
     </div>
     <script src="./bundle.js"></script>
   </body>
