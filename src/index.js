@@ -4,11 +4,13 @@ import './style.css';
 import getGifId from './weatherCodes.js';
 
 // Get references
+const container = document.querySelector('.container');
 const weatherDisplay = document.querySelector('#results');
 const toggleTempBtn = document.querySelector('#toggleTemp');
 const resultsContainer = document.querySelector('#resultsContainer');
 const locationInput = document.querySelector('#location');
 const getWeatherBtn = document.querySelector('#getWeatherBtn');
+const loader = document.querySelector('.loader');
 
 let currentlyCelsius = true;
 
@@ -18,8 +20,7 @@ async function displayGif(gifId) {
     const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=gKnDj7gTSSJLIH8DHjOpl6QHRk80I5sj&rating=g`, {mode: 'cors'});
     const gifData = await response.json();
     const link = gifData.data.images.original.url
-    document.body.style.backgroundImage = `url(${link})`;
-    document.body.style.backgroundSize = 'cover';
+    container.style.backgroundImage = `url(${link})`;
     // weatherDisplay.append(picture);
   } catch(e) {
     if(e instanceof TypeError) {
@@ -71,6 +72,7 @@ function displayWeatherInfo(data) {
     const condition = document.createElement('div');
     condition.textContent = forecastConditions[i];
     const icon = document.createElement('img');
+    icon.className = 'icon';
     icon.src = forecastIcons[i];
 
     dayDiv.appendChild(day);
@@ -90,10 +92,12 @@ async function getWeather() {
   const str = `https://api.weatherapi.com/v1/forecast.json?key=e51c6b2ad78b4d958b1140311242702&q&q=${query}&days=3&aqi=no&alerts=no`;
 
   try {
+    loader.style.display = 'block';
     const response = await fetch(str, {mode: 'cors'});
     const data = await response.json();
     console.log(data);
     displayWeatherInfo(data);
+    loader.style.display = 'none';
   } catch(e) {
     weatherDisplay.style.display = 'block';
     weatherDisplay.textContent = e.message;
@@ -127,5 +131,6 @@ toggleTempBtn.addEventListener('click', (e) => {
 
 
 weatherDisplay.style.display = 'none';
+loader.style.display = 'none';
 
 

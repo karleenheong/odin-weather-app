@@ -3,19 +3,25 @@
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.2rem;
-  text-align: center;
+  overflow-x: hidden;
 }
 
-body {
+.container {
   background-color: lightblue;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  text-align: center;
+  background-size: 100% 100%;
 }
 
-form {
+.formDiv {
   margin: 15px;
 }
 
-form div {
-  margin-bottom: 15px;
+input {
+  text-align: center;
 }
 
 #getWeatherBtn,
@@ -25,6 +31,7 @@ form div {
   border: none;
   border-radius: 10px;
   margin: 20px 0;
+  font-size: 1rem;
 }
 
 #getWeatherBtn {
@@ -35,47 +42,109 @@ form div {
   background-color: rgb(42, 42, 98);
 }
 
-#resultsContainer {
-  margin: 20px;
+#results {
   display: flex;
   flex-direction: column;
+  margin: 20px 0;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#resultsContainer {
+  margin-top: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .forecastGrid {
-  width: 80%;
   display: flex;
-  grid-gap: 10px;
-  margin: 30px;
-  justify-content: stretch;
-  align-items: top;
+  flex-direction: row;
+  width: 100%;
+  height: 60%;
   text-align: center;
-  align-self: center;
-}
-
-#resultsContainer div {
-  font-size: 1.5rem;
+  gap: 10px;
 }
 
 .dayDiv {
   background-color: rgba(132, 182, 248, 0.5);
-  padding: 20px;
-  border-radius: 20px;
-  margin: 20px;
+  padding: 15px;
+  margin: 10px;
   width: 100%;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .dayDiv div {
-  margin-top: 10px;
+  margin-top: 20px;
+  font-size: 1.2rem;
 }
 
 .weatherIntro {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
+.icon {
+  width: 150px;
+  margin: 0 auto;
+}
 
-/* div {
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid navy;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  margin: 15px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+div {
   border: 2px solid purple;
-} */
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  * {
+    font-size: 1.1rem;
+  }
+
+  .container {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .weatherIntro {
+    font-size: 1.1rem;
+  }
+
+  .forecastGrid {
+    flex-direction: column;
+  }
+
+  .dayDiv {
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dayDiv div {
+    font-size: 1rem;
+  }
+
+  .icon {
+    width: 80px;
+  }
+}
