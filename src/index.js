@@ -13,6 +13,7 @@ const getWeatherBtn = document.querySelector('#getWeatherBtn');
 const loader = document.querySelector('.loader');
 
 let currentlyCelsius = true;
+let queryLocation = '';
 
 // Get Gif
 async function displayGif(gifId) {
@@ -35,7 +36,7 @@ async function displayGif(gifId) {
 function displayWeatherInfo(data) {
   weatherDisplay.style.display = 'block';
   const weatherIntro = document.createElement('div');
-  weatherIntro.textContent = `Weather Forecast for ${locationInput.value}`;
+  weatherIntro.textContent = `Weather Forecast for ${data.location.name}, ${data.location.country}`;
   weatherIntro.className = 'weatherIntro';
 
   const currentConditionCode = data.current.condition.code;
@@ -86,22 +87,26 @@ function displayWeatherInfo(data) {
   resultsContainer.appendChild(forecastGrid);
 }
 
-async function getWeather() {
-  const query = locationInput.value;
-  console.log(query);
-  const str = `https://api.weatherapi.com/v1/forecast.json?key=e51c6b2ad78b4d958b1140311242702&q&q=${query}&days=3&aqi=no&alerts=no`;
+async function getWeather(query) {
+  const str = `https://api.weatherapi.com/v1/forecast.json?key=44ff13e7bbe642388c5195258240103&q=${query}&days=3&aqi=no&alerts=no`;
 
   try {
     loader.style.display = 'block';
     const response = await fetch(str, {mode: 'cors'});
     const data = await response.json();
     console.log(data);
-    displayWeatherInfo(data);
+    console.log(data.location.name.toLowerCase());
+    console.log(locationInput.value.toLowerCase());
+    if(data.location.name.toLowerCase() !== locationInput.value.toLowerCase()) {
+      console.error('not the right place');
+    } else {
+      displayWeatherInfo(data);
+    }
     loader.style.display = 'none';
   } catch(e) {
     weatherDisplay.style.display = 'block';
     weatherDisplay.textContent = e.message;
-  }
+    }
 }
 
 function clearContainer() {
@@ -113,7 +118,10 @@ function clearContainer() {
 getWeatherBtn.addEventListener('click', (e) => {
   e.preventDefault();
   clearContainer();
-  getWeather();
+  if(locationInput.value !== '') {
+    queryLocation = locationInput.value;
+    getWeather(queryLocation);
+  } 
 });
 
 toggleTempBtn.addEventListener('click', (e) => {
@@ -126,11 +134,13 @@ toggleTempBtn.addEventListener('click', (e) => {
     toggleTempBtn.textContent = 'Change to Fahrenheit'
     currentlyCelsius = true;
   }
-  getWeather();
+  getWeather(queryLocation);
 });
 
 
 weatherDisplay.style.display = 'none';
 loader.style.display = 'none';
+
+
 
 
