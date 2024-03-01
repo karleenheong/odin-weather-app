@@ -5,7 +5,7 @@ export default function getGifID(code) {
       gifId = 'o7R0zQ62m8Nk4';
       break;
     case 1003: // partly cloudy
-      gifId = 'CafqXRlBVvEqMchF1m';
+      gifId = '3o6wrm1JXSq5C9EtnG';
       break;
     case 1006: // cloudy
       gifId = 'lOkbL3MJnEtHi';
@@ -28,7 +28,7 @@ export default function getGifID(code) {
     case 1243:
     case 1246:
     case 1063: // rain
-      gifId = '3og0IOUWB5AZoP6la0';
+      gifId = 'PbOaO2fedzQLm';
       break;
     case 1114:
     case 1117:

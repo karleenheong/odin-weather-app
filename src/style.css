@@ -4,6 +4,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.2rem;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .container {
@@ -17,11 +18,23 @@
 }
 
 .formDiv {
-  margin: 15px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formDiv div {
+  margin: 10px 0;
 }
 
 input {
   text-align: center;
+}
+
+#locationLabel {
+  color: white;
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
 }
 
 #getWeatherBtn,
@@ -30,16 +43,17 @@ input {
   color: white;
   border: none;
   border-radius: 10px;
-  margin: 20px 0;
   font-size: 1rem;
 }
 
 #getWeatherBtn {
+  margin-top: 8px;
   background-color: navy;
 }
 
 #toggleTemp {
   background-color: rgb(42, 42, 98);
+  margin: 20px 0;
 }
 
 #results {
@@ -87,6 +101,9 @@ input {
 .weatherIntro {
   font-weight: 600;
   font-size: 1.5rem;
+  color: white;
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+  height: auto;
 }
 
 .icon {
@@ -113,31 +130,50 @@ input {
   border: 2px solid purple;
 } */
 
-/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+/* If the screen size is 600px wide or less */
 @media screen and (max-width: 600px) {
   * {
     font-size: 1.1rem;
   }
 
-  .container {
-    background-size: cover;
-    background-position: center;
-    justify-content: space-evenly;
-  }
-
-  .formDiv {
-    margin: 5px;
+  body,
+  html {
+    height: 100%;
     overflow: hidden;
   }
 
+  .container {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .formDiv {
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    height: auto;
+  }
+
+  form {
+    margin: 10px 0;
+  }
+
   #results {
-    margin: 5px 0;
+    margin: 0;
     overflow: scroll;
   }
   
   #resultsContainer {
     margin-top: 8px;
     gap: 10px;
+    height: auto;
+    gap: 10px;
+    justify-content: space-between;
   }
 
   #getWeatherBtn,
@@ -148,28 +184,36 @@ input {
   .weatherIntro {
     font-size: 1.1rem;
     overflow: hidden;
+    padding: 5px;
   }
 
   .forecastGrid {
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: max-content;
     align-items: center;
+    justify-content: stretch;
   }
 
   .dayDiv {
     padding: 10px;
     margin: 5px;
+    display: flex;
+    justify-content: center;
   }
 
   .dayDiv div {
-    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1rem;
-    padding: 3px;
+    padding: 5px 0;
+    margin: 0;
     overflow: hidden;
   }
 
   .icon {
     width: 70px;
+    height: auto;
   }
 }

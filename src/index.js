@@ -98,14 +98,13 @@ async function getWeather(query) {
     console.log(data.location.name.toLowerCase());
     console.log(locationInput.value.toLowerCase());
     if(data.location.name.toLowerCase() !== locationInput.value.toLowerCase()) {
-      console.error('not the right place');
-    } else {
-      displayWeatherInfo(data);
+      console.log('not the same location name');
     }
+    displayWeatherInfo(data);
     loader.style.display = 'none';
   } catch(e) {
     weatherDisplay.style.display = 'block';
-    weatherDisplay.textContent = e.message;
+    resultsContainer.textContent = e.message;
     }
 }
 
@@ -140,6 +139,7 @@ toggleTempBtn.addEventListener('click', (e) => {
 
 weatherDisplay.style.display = 'none';
 loader.style.display = 'none';
+displayGif('jxsR1JhrmmeUE');
 
 
 
