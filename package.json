@@ -1,5 +1,5 @@
 {
-  "name": "template-webpack-eslint-prettier1",
+  "name": "odin-weather-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
